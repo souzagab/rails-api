@@ -7,6 +7,7 @@ abort("The Rails environment is running in production mode!") if Rails.env.produ
 require 'rspec/rails'
 require 'factory_bot_rails'
 require 'mongoid-rspec'
+require 'ffaker'
 
 RSpec.configure do |config|
   config.include Mongoid::Matchers, type: :model
