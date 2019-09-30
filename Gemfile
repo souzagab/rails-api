@@ -28,6 +28,7 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'mongoid-rspec'
   gem 'ffaker'
+  gem 'jwt'
   
 end
 
