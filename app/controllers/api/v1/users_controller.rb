@@ -1,5 +1,6 @@
 class Api::V1::UsersController < ApplicationController
-    before_action :set_user, only: %i[show update destroy]  
+    before_action :set_user, only: %i[show update destroy]
+    before_action :check_owner, only: %i[update destroy]  
     wrap_parameters :user, include: %i[name password email description]
     
     def index
@@ -39,6 +40,9 @@ class Api::V1::UsersController < ApplicationController
         end
         def user_params
             params.require(:user).permit(:name,:email,:description,:password)
+        end
+        def check_owner
+            head :forbidden unless @user.id == current_user&.id
         end
 
 end
