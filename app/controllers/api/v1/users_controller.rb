@@ -1,7 +1,13 @@
-class Api::V1::UserController < ApplicationController
+class Api::V1::UsersController < ApplicationController
     before_action :set_user, only: %i[show update destroy]  
     wrap_parameters :user, include: %i[name password email description]
     
+    def index
+       @users = User.all
+       render json: @users
+    end
+
+
     def create
         @user= User.new(user_params)
         if @user.save
