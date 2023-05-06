@@ -42,6 +42,8 @@ group :development, :test do
   gem "faker", "~> 3.2"
   gem "shoulda-matchers", "~> 5.3"
 
+  gem "solargraph"
+  gem "solargraph-rails"
 
   gem "rubocop", require: false
   gem "rubocop-rails", require: false
