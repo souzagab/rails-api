@@ -4,6 +4,7 @@ on: [pull_request]
 
 env:
   RUBY_VERSION: 3.2
+  GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
 
 jobs:
   linters:
@@ -20,7 +21,7 @@ jobs:
       - name: rubocop
         uses: reviewdog/action-rubocop@v2
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ env.GITHUB_TOKEN }}
           rubocop_version: gemfile
           reporter: github-pr-review # Default is github-pr-check
 
@@ -28,12 +29,12 @@ jobs:
       # - name: Brakeman
       #   uses: reviewdog/action-brakeman@v1
       #   with:
-      #     github_token: ${{ secrets.GITHUB_TOKEN }}
+      #     github_token: ${{ env.GITHUB_TOKEN }}
       # - name: Reek
       #   uses: reviewdog/action-reek@v1
       #   with:
-      #     github_token: ${{ secrets.GITHUB_TOKEN }}
+      #     github_token: ${{ env.GITHUB_TOKEN }}
       # - name: Fasterer
       #   uses: vk26/action-fasterer@v1
       #   with:
-      #     github_token: ${{ secrets.GITHUB_TOKEN }}
+      #     github_token: ${{ env.GITHUB_TOKEN }}
