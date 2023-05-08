@@ -20,7 +20,7 @@ jobs:
       - name: rubocop
         uses: reviewdog/action-rubocop@v2
         with:
-          github_token: ${{ secrets.github_token }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           rubocop_version: gemfile
           reporter: github-pr-review # Default is github-pr-check
 
@@ -28,12 +28,12 @@ jobs:
       # - name: Brakeman
       #   uses: reviewdog/action-brakeman@v1
       #   with:
-      #     github_token: ${{ secrets.github_token }}
+      #     github_token: ${{ secrets.GITHUB_TOKEN }}
       # - name: Reek
       #   uses: reviewdog/action-reek@v1
       #   with:
-      #     github_token: ${{ secrets.github_token }}
+      #     github_token: ${{ secrets.GITHUB_TOKEN }}
       # - name: Fasterer
       #   uses: vk26/action-fasterer@v1
       #   with:
-      #     github_token: ${{ secrets.github_token }}
+      #     github_token: ${{ secrets.GITHUB_TOKEN }}
