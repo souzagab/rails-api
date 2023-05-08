@@ -1,0 +1,39 @@
+name: Linters
+
+on: [pull_request]
+
+env:
+  RUBY_VERSION: 3.2
+
+jobs:
+  linters:
+    name: runner / linters
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v1
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ env.RUBY_VERSION }}
+
+      - name: rubocop
+        uses: reviewdog/action-rubocop@v2
+        with:
+          github_token: ${{ secrets.github_token }}
+          rubocop_version: gemfile
+          reporter: github-pr-review # Default is github-pr-check
+
+      # TODO: Configure other checkers
+      # - name: Brakeman
+      #   uses: reviewdog/action-brakeman@v1
+      #   with:
+      #     github_token: ${{ secrets.github_token }}
+      # - name: Reek
+      #   uses: reviewdog/action-reek@v1
+      #   with:
+      #     github_token: ${{ secrets.github_token }}
+      # - name: Fasterer
+      #   uses: vk26/action-fasterer@v1
+      #   with:
+      #     github_token: ${{ secrets.github_token }}
