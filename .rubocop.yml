@@ -4,10 +4,34 @@ require:
   - rubocop-performance
 
 AllCops:
-  TargetRubyVersion: 3.1
+  NewCops: enable
+  TargetRubyVersion: 3.2
   Exclude:
     - bin/*
     - vendor/**/*
+  # Default formatter will be used if no `-f/--format` option is given.
+  DefaultFormatter: progress
+  # Cop names are displayed in offense messages by default. Change behavior
+  # by overriding DisplayCopNames, or by giving the `--no-display-cop-names`
+  # option.
+  DisplayCopNames: true
+  # Style guide URLs are not displayed in offense messages by default. Change
+  # behavior by overriding `DisplayStyleGuide`, or by giving the
+  # `-S/--display-style-guide` option.
+  DisplayStyleGuide: false
+  # When specifying style guide URLs, any paths and/or fragments will be
+  # evaluated relative to the base URL.
+  StyleGuideBaseURL: https://rubystyle.guide
+  # Documentation URLs will be constructed using the base URL.
+  DocumentationBaseURL: https://docs.rubocop.org/rubocop
+  # Extra details are not displayed in offense messages by default. Change
+  # behavior by overriding ExtraDetails, or by giving the
+  # `-E/--extra-details` option.
+  ExtraDetails: false
+  # Additional cops that do not reference a style guide rule may be enabled by
+  # default. Change behavior by overriding `StyleGuideCopsOnly`, or by giving
+  # the `--only-guide-cops` option.
+  StyleGuideCopsOnly: false
 
 Bundler/OrderedGems:
   Enabled: false
@@ -71,10 +95,7 @@ Style/RedundantPercentQ:
   Enabled: false
 
 Style/Documentation:
-  Exclude:
-    - "config/**/*"
-    - "db/**/*"
-    - "spec/**/*"
+  Enabled: false
 
 Style/AndOr:
   EnforcedStyle: conditionals
