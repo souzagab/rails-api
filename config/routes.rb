@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  # Healthcheck
+  get "healthz" => "rails/health#show"
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+  match "*path", to: "application#route_not_found", via: :all
 end
