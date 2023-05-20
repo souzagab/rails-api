@@ -33,8 +33,8 @@ Rails.application.configure do
   # Store uploaded files on the local file system (see config/storage.yml for options).
   # config.active_storage.service = :local
 
-  # Print deprecation notices to the Rails logger.
-  config.active_support.deprecation = :log
+  # Raising deprecation warnings to keep the app updated!
+  config.active_support.deprecation = :raise
 
   # Raise exceptions for disallowed deprecations.
   config.active_support.disallowed_deprecation = :raise
