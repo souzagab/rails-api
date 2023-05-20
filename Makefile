@@ -1,4 +1,5 @@
-development_path = .docker/dev/docker-compose.yml
+DEVELOPMENT_PATH = .docker/dev/docker-compose.yml
+PRODUCTION_PATH = .docker/prod/
 
 ## Misc
 list: # List all available targets for this Makefile
@@ -6,17 +7,30 @@ list: # List all available targets for this Makefile
 
 ## Development
 stop: # Stop all containers
-	docker compose -f $(development_path) down
+	docker compose -f $(DEVELOPMENT_PATH) down
 
 clean: # Stop and remove all containers, volumes and images
-	docker compose -f $(development_path) down --rmi all --volumes --remove-orphans
+	docker compose -f $(DEVELOPMENT_PATH) down --rmi all --volumes --remove-orphans
 
 build: stop # Build the containers
-	docker compose -f $(development_path) build --no-cache
-	docker compose -f $(development_path) run --rm api bin/setup
+	docker compose -f $(DEVELOPMENT_PATH) build --no-cache
+	docker compose -f $(DEVELOPMENT_PATH) run --rm api bin/setup
 
 bash: # Open a bash session in the api container
-	docker compose -f $(development_path) run --rm api bash
+	docker compose -f $(DEVELOPMENT_PATH) run --rm api bash
 
 server: stop # Start the server
-	docker compose -f $(development_path) up
+	docker compose -f $(DEVELOPMENT_PATH) up
+
+## Production
+IMAGE_NAME ?= "rails-api:latest"
+
+build-release: # Build the production image
+	docker build \
+		--tag $(IMAGE_NAME) \
+		--file "${PRODUCTION_PATH}/Dockerfile" \
+		.
+
+# TODO: Push the image to a registry
+release: build-release # Build and push the production image
+
