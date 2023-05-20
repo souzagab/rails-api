@@ -11,6 +11,8 @@ updates:
       - dependency-type: indirect
     labels:
       - dependencies
+    reviewers:
+      - souzagab
 
   - package-ecosystem: github-actions
     directory: /
@@ -18,3 +20,6 @@ updates:
       interval: weekly
     labels:
       - ops
+    reviewers:
+      - souzagab
+
