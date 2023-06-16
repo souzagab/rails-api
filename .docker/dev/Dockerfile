@@ -1,5 +1,5 @@
 # Development Dockerfile
-ARG RUBY_IMAGE=$RUBY_IMAGE
+ARG RUBY_IMAGE=ruby:3.2-alpine3.17
 
 FROM $RUBY_IMAGE as ruby
 

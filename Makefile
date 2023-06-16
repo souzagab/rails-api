@@ -33,4 +33,3 @@ build-release: # Build the production image
 
 # TODO: Push the image to a registry
 release: build-release # Build and push the production image
-
